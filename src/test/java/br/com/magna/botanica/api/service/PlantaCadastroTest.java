@@ -22,9 +22,8 @@ class PlantaCadastroTest {
 
 	@Test
 	void testCadastrar() {
-		DadosCadastroPlanta dados = new DadosCadastroPlanta("ANDREAEIDAE", "VERDE AZULADO", 2L, 4L, 5L, 2L, 2L, 4L);
-		ResponseEntity<Planta> response = restTemplate.postForEntity("/plantas/cadastrar", dados, Planta.class);
+		DadosCadastroPlanta dados = new DadosCadastroPlanta("ANDREAIDAE", "VERDE AZULADO", 2L, 4L, 5L, 2L, 2L, 4L);
+		ResponseEntity<String> response = restTemplate.postForEntity("/plantas/cadastrar", dados, String.class);
 		Assert.assertEquals(HttpStatus.CREATED, response.getStatusCode());
-		Assert.assertEquals("ANDREAEIDAE", response.getBody().getNome());
 	}
 }

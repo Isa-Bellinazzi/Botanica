@@ -16,7 +16,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
     @Test
      void testCarregarDadosDetalhamentoFilo() {
-        String descricao = "Lorem ipsum dolor sit amet";
+        String descricao = "Testando Filo";
         Boolean folhasVerdadeiras = true;
         Boolean cauleVerdadeiro = true;
         Boolean raizVerdadeiras = true;

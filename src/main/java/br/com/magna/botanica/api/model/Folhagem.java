@@ -1,26 +1,14 @@
 package br.com.magna.botanica.api.model;
-
 import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
-import lombok.AllArgsConstructor;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
 
 @Table(name = "folhagens")
 @Entity(name = "Folhagem")
-@Getter
-@NoArgsConstructor
-@AllArgsConstructor
-@EqualsAndHashCode(of = "id")
 public class Folhagem {
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String descricao;
 	@OneToOne(targetEntity = Classe.class)
@@ -28,13 +16,18 @@ public class Folhagem {
 	private Classe classeId;
 	private Boolean ativo;
 
-	public Folhagem(Long id) {
-		this.id = id;
+	public String getDescricao() {
+		return descricao;
 	}
 
-	public Folhagem(String descricao, Classe classeId, Boolean ativo) {
-		this.descricao = descricao;
-		this.classeId = classeId;
-		this.ativo = ativo;
+	public Classe getClasseId() {
+		return classeId;
+	}
+
+	public Boolean getAtivo() {
+		return ativo;
+	}
+	public Long getId() {
+		return id;
 	}
 }

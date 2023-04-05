@@ -1,11 +1,9 @@
 package br.com.magna.botanica.api.exceptions;
 
-
-
-
-
+import static org.junit.Assert.assertNotEquals;
+import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +14,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.web.client.HttpClientErrorException;
 
 import br.com.magna.botanica.api.model.Planta;
 import br.com.magna.botanica.api.record.DadosCadastroPlanta;
@@ -33,9 +32,10 @@ class TratadorDeErrosTest {
 
     @Test
     void testNotFound() {
-		ResponseEntity<Planta> response = restTemplate.getForEntity("/listagem/999", Planta.class);
+        ResponseEntity<Void> response = restTemplate.getForEntity("/listagem/999", Void.class);
         assertEquals(HttpStatus.NOT_FOUND, response.getStatusCode());
     }
+
 
     @Test
     void testValidationErrors() {
@@ -44,11 +44,14 @@ class TratadorDeErrosTest {
         assertEquals(HttpStatus.BAD_REQUEST, response.getStatusCode());
     }
 
+
     @Test
     void testDataIntegrityViolation() {
     	DadosCadastroPlanta dados = new DadosCadastroPlanta("SAMAMBAIA", "VERDE AZULADO", 2L, 4L, 5L, 2L, 2L, 4L);
-		ResponseEntity<Planta> response = restTemplate.postForEntity("/plantas/cadastrar", dados, Planta.class);
+		ResponseEntity<String> response = restTemplate.postForEntity("/plantas/cadastrar", dados, String.class);
 		assertEquals(HttpStatus.INTERNAL_SERVER_ERROR, response.getStatusCode());
-    }
+
+}
+    
 
 }

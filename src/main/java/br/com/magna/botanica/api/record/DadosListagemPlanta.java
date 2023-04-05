@@ -6,24 +6,26 @@ public record DadosListagemPlanta(
 Long id,
 String nome,
 String cor, 
-Long id_filo,
-Long id_classe, 
-Long id_ordem,
-Long id_raiz, 
-Long id_caule,
-Long id_folhagem,
+String filo,
+String classe, 
+String ordem,
+String raiz, 
+String caule,
+String folhagem,
 Boolean ativo) {
 
 	public DadosListagemPlanta(Planta planta) {
-		this(planta.getId(), planta.getNome(), 
-			 planta.getCor(), 
-			 planta.getIdFilo().getId(),
-			 planta.getCauleId().getId(), 
-			 planta.getOrdemId().getId(),
-			 planta.getRaizId().getId(), 
-			 planta.getCauleId().getId(), 
-			 planta.getFolhagemId().getId(),
-			 planta.getAtivo()
-		);
+	    this(planta.getId(),
+	            planta.getNome(),
+	            planta.getCor(),
+	            planta.getFilo().getDescricao(),
+	            planta.getClasse().getDescricao(),
+	            planta.getOrdem().getDescricao(),
+	            planta.getRaiz().getDescricao(),
+	            planta.getCaule().getDescricao(),
+	            planta.getFolhagem().getDescricao(),
+	            planta.getAtivo()
+	            );
+	   }
 	}
-}
+

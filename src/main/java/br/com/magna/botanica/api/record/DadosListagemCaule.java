@@ -13,4 +13,5 @@ public record DadosListagemCaule(
 	public DadosListagemCaule(Caule caule) {
 		this(caule.getId(), caule.getDescricao(), caule.getClasseId().getId(), caule.getAtivo());
 }
+
 }

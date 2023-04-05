@@ -1,11 +1,6 @@
 package br.com.magna.botanica.api.model;
-
-
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonProperty;
-
-import br.com.magna.botanica.api.record.DadosCadastroPlanta;
-import br.com.magna.botanica.api.record.DadosPlanta;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -13,17 +8,9 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
-import lombok.AllArgsConstructor;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
 
 @Table(name = "plantas")
 @Entity(name = "Planta")
-@Getter
-@NoArgsConstructor
-@AllArgsConstructor
-@EqualsAndHashCode(of = "id")
 @JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.ANY)
  public class Planta {
 
@@ -32,33 +19,33 @@ import lombok.NoArgsConstructor;
     @JsonProperty("id")
 	private Long id;
     @JsonProperty("nome")
-	private String nome;
+	protected String nome;
     @JsonProperty("cor")
 	private String cor;
 	@OneToOne(targetEntity = Filo.class)
 	@JoinColumn(name = "filo_id")
     @JsonProperty("filo")
-	private Filo idFilo;
+	private Filo filo;
 	@OneToOne(targetEntity = Classe.class)
 	@JoinColumn(name = "classe_id")
     @JsonProperty("classe")
-	private Classe classeId;
+	private Classe classe;
 	@OneToOne(targetEntity = Ordem.class)
 	@JoinColumn(name = "ordem_id")
     @JsonProperty("ordem")
-	private Ordem ordemId;
+	private Ordem ordem;
 	@OneToOne(targetEntity = Raiz.class)
 	@JoinColumn(name = "raiz_id")
     @JsonProperty("raiz")
-	private Raiz raizId;
+	private Raiz raiz;
 	@OneToOne(targetEntity = Caule.class)
 	@JoinColumn(name = "caule_id")
     @JsonProperty("caule")
-	private Caule cauleId;
+	private Caule caule;
 	@OneToOne(targetEntity = Folhagem.class)
 	@JoinColumn(name = "folhagem_id")
     @JsonProperty("folhagem")
-	private Folhagem folhagemId;
+	private Folhagem folhagem;
     @JsonProperty("ativo")
 	private Boolean ativo;
 
@@ -70,31 +57,77 @@ import lombok.NoArgsConstructor;
 	 	return ativo;
 	}
 
+	public Long getId() {
+		return id;
+	}
 
-	 public Planta(DadosCadastroPlanta dados) {
-			this.nome = dados.nome();
-			this.cor = dados.cor();
-			this.idFilo = new Filo(dados.filoId());
-			this.classeId = new Classe(dados.classeId());
-			this.ordemId = new Ordem(dados.ordemId());
-			this.raizId = new Raiz(dados.raizId());
-			this.cauleId = new Caule(dados.cauleId());
-			this.folhagemId = new Folhagem(dados.folhagemId());
-			this.ativo = true;
+	public String getNome() {
+		return nome;
+	}
+
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+
+	public String getCor() {
+		return cor;
+	}
+
+	public void setCor(String cor) {
+		this.cor = cor;
+	}
+
+	public Filo getFilo() {
+		return filo;
+	}
+
+	public void setFilo(Filo filo) {
+		this.filo = filo;
+	}
+
+	public Classe getClasse() {
+		return classe;
+	}
+
+	public void setClasse(Classe classe) {
+		this.classe = classe;
+	}
+
+	public Ordem getOrdem() {
+		return ordem;
+	}
+
+	public void setOrdem(Ordem ordem) {
+		this.ordem = ordem;
+	}
+
+	public Raiz getRaiz() {
+		return raiz;
+	}
+
+	public void setRaiz(Raiz raiz) {
+		this.raiz = raiz;
+	}
+
+	public Caule getCaule() {
+		return caule;
+	}
+
+	public void setCaule(Caule caule) {
+		this.caule = caule;
+	}
+
+	public Folhagem getFolhagem() {
+		return folhagem;
+	}
+
+	public void setFolhagem(Folhagem folhagem) {
+		this.folhagem = folhagem;
+	}
+
+	public void setAtivo(Boolean ativo) {
+		this.ativo = ativo;
 	}
 
 
-	 public void atualizarInformacoes(DadosPlanta dadosPlanta) {
-		    this.nome = dadosPlanta.nome();
-		    this.cor = dadosPlanta.cor();
-		    this.idFilo = dadosPlanta.filo();
-		    this.classeId = dadosPlanta.classe();
-		    this.ordemId = dadosPlanta.ordem();
-		    this.raizId = dadosPlanta.raiz();
-		    this.cauleId = dadosPlanta.caule();
-		    this.folhagemId = dadosPlanta.folhagem();
-		}
-
-	
-	
 }

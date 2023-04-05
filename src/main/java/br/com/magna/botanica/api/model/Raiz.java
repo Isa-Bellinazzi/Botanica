@@ -7,17 +7,10 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
-import lombok.AllArgsConstructor;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
 
 @Table(name = "raizes")
 @Entity(name = "Raiz")
-@Getter
-@NoArgsConstructor
-@AllArgsConstructor
-@EqualsAndHashCode(of = "id")
+
 public class Raiz {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -28,13 +21,21 @@ public class Raiz {
     private Classe classeId;
     private Boolean ativo;
 
-	public Raiz(Long id) {
-		this.id = id;
+	public Long getId() {
+		return id;
 	}
-    
-    public Raiz(String descricao, Classe classeId, Boolean ativo) {
-        this.descricao = descricao;
-        this.classeId = classeId;
-        this.ativo = ativo;
-    }
+
+	public String getDescricao() {
+		return descricao;
+	}
+
+	public Classe getClasseId() {
+		return classeId;
+	}
+
+	public Boolean getAtivo() {
+		return ativo;
+	}
+
+
 }

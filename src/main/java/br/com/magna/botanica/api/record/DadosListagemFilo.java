@@ -9,13 +9,21 @@ public record DadosListagemFilo(Long id,
         Boolean raizVerdadeiras,
         Boolean frutos,
         Boolean flores,
-        Boolean sementes
+        Boolean sementes,
+        Boolean ativo
 
          ) {
 	
 
 	public DadosListagemFilo(Filo filo) {
-		this(filo.getId(), filo.getDescricao(), filo.getFolhasVerdadeiras(), filo.getCauleVerdadeiro(),
-				filo.getFolhasVerdadeiras(), filo.getFrutos(), filo.getFlores(), filo.getSementes());
+		this(filo.getId(), 
+			 filo.getDescricao(), 
+			 filo.getFolhasVerdadeiras(), 
+			 filo.getCauleVerdadeiro(),
+			 filo.getFolhasVerdadeiras(),
+			 filo.getFrutos(), 
+			 filo.getFlores(), 
+			 filo.getSementes(),
+			 filo.getAtivo());
 }
 }

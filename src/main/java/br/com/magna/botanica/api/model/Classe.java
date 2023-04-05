@@ -7,17 +7,9 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
-import lombok.AllArgsConstructor;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
 
 @Table(name = "classes")
 @Entity(name = "Classe")
-@Getter
-@NoArgsConstructor
-@AllArgsConstructor
-@EqualsAndHashCode(of = "id")
 
 public class Classe {
 	@Id
@@ -29,14 +21,21 @@ public class Classe {
 	private Filo idFilo;
 	private Boolean ativo;
 
-	public Classe(Long id) {
-		this.id = id;
+
+	public Long getId() {
+		return id;
 	}
 
-	public Classe(String descricao, Filo idFilo, Boolean ativo) {
-		this.descricao = descricao;
-		this.idFilo = idFilo;
-		this.ativo = ativo;
+	public String getDescricao() {
+		return descricao;
+	}
+
+	public Filo getIdFilo() {
+		return idFilo;
+	}
+
+	public Boolean getAtivo() {
+		return ativo;
 	}
 
 }
