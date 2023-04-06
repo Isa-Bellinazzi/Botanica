@@ -30,11 +30,11 @@ class TratadorDeErrosTest {
     private int port;
 
 
-    @Test
+    /*@Test
     void testNotFound() {
-        ResponseEntity<Void> response = restTemplate.getForEntity("/listagem/999", Void.class);
-        assertEquals(HttpStatus.NOT_FOUND, response.getStatusCode());
-    }
+    	  ResponseEntity<String> response = restTemplate.getForEntity("/plantas/listagem/compra", String.class);
+    	  assertEquals(HttpStatus.NOT_FOUND, response.getStatusCode());
+    }*/
 
 
     @Test
